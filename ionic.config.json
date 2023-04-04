@@ -1,0 +1,7 @@
+{
+  "name": "estoque-aap",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
