@@ -1,0 +1,32 @@
+------ PASSOS PARA CRIAR UMA API COM IONIC
+
+1) Cria o aplicativo
+
+2) Criar o serviço (service) (ionic generate service past/name)
+2.1) nome da pasta convenção--- pasta services ou separar por tipo de informação
+2.2) nome para o arquivo para a api inteira  -- criar um serviço para cada endpoint
+
+3) Importa o HttpClientModule no app.module.ts (app.page.ts)
+
+4) Importa o HttpClient no serviço (todos)
+
+5) Injetar o HttpClient no construtor no serviço (todos)
+
+6) Criar a variavel da Url do endpoint
+
+7) Criar os metodos do CRUD no serviço
+
+7 extra) Criar a classe Model da tabela (se for um endpoint de tabela)
+
+8) Criar qualquer outro método necessário
+
+9) Injetar o Serviço na página que deseja utilizar a API
+
+10) Criar o método que interage com o método do Serviço
+
+11) Usar os dados no HTML
+
+___ Regras do typeScript____
+
+O ? é nulo = senha?: string;
+O undefined é indefinido é vazio, nome: string | undefined;
