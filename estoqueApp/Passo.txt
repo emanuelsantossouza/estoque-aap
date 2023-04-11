@@ -6,7 +6,8 @@
 2.1) nome da pasta convenção--- pasta services ou separar por tipo de informação
 2.2) nome para o arquivo para a api inteira  -- criar um serviço para cada endpoint
 
-3) Importa o HttpClientModule no app.module.ts (app.page.ts)
+3) Importa o HttpClientModule no app.module.ts 
+3.1) se for standalone, colocar o provideHttpClient nos Providers localizado no (Main.ts)
 
 4) Importa o HttpClient no serviço (todos)
 
