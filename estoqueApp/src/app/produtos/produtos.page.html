@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>produtos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card *ngFor="let produto of listaProdutos">
+    <img src="{{produto.nome_imagem}}" alt="Silhouette of mountains" />
+    <ion-card-header>
+      <ion-item lines="none">
+        <ion-card-title>{{produto.nome_produto}}</ion-card-title>
+        <ion-badge slot="end">{{produto.preco}}</ion-badge>
+      </ion-item>
+
+    </ion-card-header>
+
+    <ion-card-content>
+      {{produto.descricao_produto}}
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-item *ngFor="let produto of listaProdutos">
+    <ion-label>{{produto.nome_produto}}</ion-label>
+  </ion-item>
+</ion-content>

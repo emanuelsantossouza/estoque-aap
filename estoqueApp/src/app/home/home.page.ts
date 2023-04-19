@@ -1,7 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { Cliente } from '../Models/Cliente.model';
 import { ClientesService } from '../services/clientes.service';
 
 @Component({
@@ -9,17 +11,21 @@ import { ClientesService } from '../services/clientes.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, RouterLink],
+  imports: [IonicModule, RouterLink, CommonModule],
 })
 export class HomePage {
+
+  listaClientes: Cliente[] = [];
+
+
   constructor(private ClientesService: ClientesService) {
     this.buscarClientes();
   }
 
-  async buscarClientes() {
+  buscarClientes() {
 
-    await this.ClientesService.getAll().subscribe((dados) =>{ 
-      console.log(dados);
+    this.ClientesService.getAll().subscribe((dados) =>{ 
+      this.listaClientes = dados as Cliente[];
     });
   }
 }

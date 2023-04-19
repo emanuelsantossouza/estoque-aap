@@ -7,14 +7,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-item *ngFor="let cliente of listaClientes">
+  <ion-badge slot="end">{{cliente.id}}</ion-badge>
+  <ion-label>
+    <h1>{{cliente.nome}}</h1>
+    <h4><a href="mailto:{{cliente.email}}">{{cliente.email}}</a></h4>
+  </ion-label>
+</ion-item>
 </ion-content>
