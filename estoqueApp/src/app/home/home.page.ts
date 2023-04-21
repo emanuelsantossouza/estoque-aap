@@ -24,8 +24,14 @@ export class HomePage {
 
   buscarClientes() {
 
-    this.ClientesService.getAll().subscribe((dados) =>{ 
-      this.listaClientes = dados as Cliente[];
-    });
+    // ------ Sem o Observable no services --------
+    // this.ClientesService.getAll().subscribe((dados) =>{ 
+    //   this.listaClientes = dados as Cliente[];
+    // });
+
+    // ------ Com o Observable no services --------
+    this.ClientesService.getAll().subscribe((dados) => {
+      this.listaClientes = dados;
+    })
   }
 }

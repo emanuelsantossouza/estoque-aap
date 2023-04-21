@@ -8,6 +8,7 @@ import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 
 import { provideHttpClient } from '@angular/common/http';
+import { AlertController } from '@ionic/angular/providers/alert-controller';
 
 if (environment.production) {
   enableProdMode();
@@ -18,6 +19,6 @@ bootstrapApplication(AppComponent, {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     importProvidersFrom(IonicModule.forRoot({})),
     provideRouter(routes),
-    provideHttpClient()
+    provideHttpClient(),
   ],
 });
