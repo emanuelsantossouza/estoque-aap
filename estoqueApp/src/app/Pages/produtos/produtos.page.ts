@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { ProdutosService } from '../services/produtos.service';
-import { Produto } from '../Models/Produto.model';
+import { ProdutosService } from '../../services/produtos.service';
+import { Produto } from '../../Models/Produto.model';
 
 @Component({
   selector: 'app-produtos',

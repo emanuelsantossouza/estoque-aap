@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { async } from '@angular/core/testing';
 import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { Cliente } from '../Models/Cliente.model';
-import { ClientesService } from '../services/clientes.service';
+import { Cliente } from '../../Models/Cliente.model';
+import { ClientesService } from '../../services/clientes.service';
 
 @Component({
   selector: 'app-home',
