@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, EMPTY, map, Observable } from 'rxjs';
 import { Cliente } from '../Models/Cliente.model';
@@ -27,21 +27,24 @@ export class ClientesService {
     );
   }
 
-  getOne(id: number) {
-    return this.http.get(`${this.url}/${id}`);
+  getOne(id: number): Observable<Cliente> {
+    return this.http.get<Cliente>(`${this.url}/${id}`).pipe( // O pipe realiza varias funções de tratamento
+      map(retorn => retorn),
+      catchError((erro) => this.exibirError(erro))
+    );
   }
 
-  update(cliente: Cliente) {
-    return this.http.put(`${this.url}/${cliente.id}`, cliente);
+  update(cliente: Cliente): Observable<Cliente> {
+    return this.http.put<Cliente>(`${this.url}/${cliente.id}`, cliente).pipe( // O pipe realiza varias funções de tratamento
+      map(retorn => retorn),
+      catchError((erro) => this.exibirError(erro))
+    );
   }
 
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  login() { }
-
-  logout() { }
 
   exibirError(erro: any): Observable<any> {
     const titulo = "Erro na conexão!"
@@ -49,8 +52,6 @@ export class ClientesService {
 
     return EMPTY;
   }
-
-
 
   async presentAlert(titulo: string, msg: string) {
     const alert = await this.alertCtnl.create({

@@ -15,6 +15,13 @@
   </ion-label>
 </ion-item>
 
+<ion-button color="warning" (click)="alterarCliente(listaClientes.id!)">
+  <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+</ion-button>
+
+<ion-button color="danger" (click)="excluirCliente(listaClientes.id!)">
+  <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+</ion-button>
 
 <ion-button routerLink="/create-cliente">
   adicionar cliente

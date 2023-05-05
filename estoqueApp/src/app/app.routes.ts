@@ -17,7 +17,11 @@ export const routes: Routes = [
   {
     path: 'create-cliente',
     loadComponent: () => import('./Pages/create-cliente/create-cliente.page').then( m => m.CreateClientePage)
+  },  {
+    path: 'alterar-cliente',
+    loadComponent: () => import('./pages/alterar-cliente/alterar-cliente.page').then( m => m.AlterarClientePage)
   },
+
 
 
 ];
