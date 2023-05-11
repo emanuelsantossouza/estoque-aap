@@ -41,7 +41,7 @@ export class HomePage {
     // ------ Com o Observable no services --------
     this.clientesService.getAll().subscribe((dados) => {
       console.log(dados)
-      this.listaClientes = dados;
+      this.listaClientes = dados as Cliente[];
     })
   }
 
@@ -51,7 +51,7 @@ export class HomePage {
 
   excluirCliente(id:number){
     return this.clientesService.delete(id).subscribe((dados) => {
-      this.listaClientes = this.listaClientes.filter(p => p.id !== id);
+      this.listaClientes = this.listaClientes.filter(c => c.id !== id);
     });
   }
 

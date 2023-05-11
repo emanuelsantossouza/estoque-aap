@@ -15,14 +15,11 @@ export const routes: Routes = [
     loadComponent: () => import('./Pages/produtos/produtos.page').then( m => m.ProdutosPage)
   },
   {
-    path: 'create-cliente',
-    loadComponent: () => import('./Pages/create-cliente/create-cliente.page').then( m => m.CreateClientePage)
-  },
-  {
     path: 'alterar-cliente/:id',
     loadComponent: () => import('./Pages/alterar-cliente/alterar-cliente.page').then( m => m.AlterarClientePage)
+  },  {
+    path: 'alterar-produtos',
+    loadComponent: () => import('./pages/alterar-produtos/alterar-produtos.page').then( m => m.AlterarProdutosPage)
   },
-
-
 
 ];

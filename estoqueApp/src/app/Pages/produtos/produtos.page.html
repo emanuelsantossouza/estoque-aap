@@ -1,29 +1,72 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>produtos</ion-title>
+    <ion-title>Produtos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
 
-  <ion-card *ngFor="let produto of listaProdutos">
-    <img src="{{produto.nome_imagem}}" alt="Silhouette of mountains" />
-    <ion-card-header>
-      <ion-item lines="none">
+  <ion-segment value="listaUser">
+    <ion-segment-button (click)="listaProductsTrue()" value="listaUser">
+      <ion-label>Lista de Produtos</ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button (click)="addNewProductsTrue()" value="addCliente">
+      <ion-label>Adicionar Produtos</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="listProducts === true">
+    <ion-card *ngFor="let produto of listaProdutos">
+      <ion-item>
+        <ion-icon name="trash-outline" slot="start"></ion-icon>
         <ion-card-title>{{produto.nome_produto}}</ion-card-title>
-        <ion-badge slot="end">{{produto.preco}}</ion-badge>
+        <ion-icon name="trash-outline" slot="end"></ion-icon>
+      </ion-item>
+      <img src="{{produto.nome_imagem}}" alt="Silhouette of mountains" />
+      <ion-card-header>
+        <ion-item lines="none">
+          <ion-badge slot="end">{{produto.preco}}</ion-badge>
+        </ion-item>
+  
+      </ion-card-header>
+  
+  
+      <ion-card-content>
+        {{produto.descricao_produto}}
+      </ion-card-content>
+    </ion-card>
+  
+  
+    <ion-item *ngFor="let produto of listaProdutos">
+      <ion-label>{{produto.nome_produto}}</ion-label>
+    </ion-item>
+  </div>
+ 
+  <div *ngIf="addProducts === true">
+    <ion-list>
+      <ion-item>
+        <ion-input label="Nome Produto" type="text" labelPlacement="floating" placeholder="Nome"
+          [(ngModel)]="nome_produto"></ion-input>
       </ion-item>
 
-    </ion-card-header>
-    
+      <ion-item>
+        <ion-input label="Descrição do produto" type="text" labelPlacement="floating" placeholder="Descrição do produto" 
+        [(ngModel)]="descricao_produto"></ion-input>
+      </ion-item>
 
-    <ion-card-content>
-      {{produto.descricao_produto}}
-    </ion-card-content>
-  </ion-card>
+      <ion-item>
+        <ion-input label="Url da Imagem" type="text" labelPlacement="floating" placeholder="Url da Imagem"
+          [(ngModel)]="nome_imagem"></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-input label="Preco do Produto" type="number" labelPlacement="floating" placeholder="Preço do produto"
+          [(ngModel)]="preco"></ion-input>
+      </ion-item>
+    </ion-list>
 
-  <ion-item *ngFor="let produto of listaProdutos">
-    <ion-label>{{produto.nome_produto}}</ion-label>
-  </ion-item>
+    <ion-button (click)="salvarProduto()" class="ion-padding" expand="block" color="dark">Salvar</ion-button>
+
+  </div>
 </ion-content>

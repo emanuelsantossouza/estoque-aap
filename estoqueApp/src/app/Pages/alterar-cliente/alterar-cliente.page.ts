@@ -15,11 +15,11 @@ import { Cliente } from 'src/app/Models/Cliente.model';
 })
 export class AlterarClientePage implements OnInit {
 
-  id:number=0;
-  nome:string = "";
-  email:string = "";
-  senha:string= '';
-  confirmarSenha:string= '';
+  id: number = 0;
+  nome: string = "";
+  email: string = "";
+  senha: string = '';
+  confirmarSenha: string = '';
 
   constructor(
     private activedRoute: ActivatedRoute,
@@ -30,14 +30,14 @@ export class AlterarClientePage implements OnInit {
   ngOnInit() {
     this.id = this.activedRoute.snapshot.params[`id`];
 
-    this.clienteService.getOne(this.id).subscribe((dados) =>{
-      this.nome = dados.nome as string;
+    this.clienteService.getOne(this.id).subscribe((dados) => {
+      this.nome = dados.
       this.email = dados.email ? dados.email : '';
     })
   }
 
-  salvar(){
-    if(this.senha == this.confirmarSenha){
+  salvar() {
+    if (this.senha == this.confirmarSenha) {
       const cliente: Cliente = {
         id: this.id,
         nome: this.nome,
@@ -45,11 +45,11 @@ export class AlterarClientePage implements OnInit {
         senha: this.senha
       };
 
-      this.clienteService.update(cliente).subscribe((dados) =>{
+      this.clienteService.update(cliente).subscribe((dados) => {
         alert('Alterado ' + dados.id)
         this.router.navigateByUrl("/home")
       })
-    } else{
+    } else {
       console.log("Erro!!!  confirmar senha está diferente de senha")
     }
   }

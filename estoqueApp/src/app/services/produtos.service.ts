@@ -12,9 +12,12 @@ export class ProdutosService {
 
   constructor(private http: HttpClient) { }
 
-  // create(produtos: Produto){
-  //   return this.http.post(this.url, produtos)
-  // }
+   create(produto: Produto): Observable<Produto>{
+    return this.http.post<Produto>(this.url, produto).pipe(
+      map(retorno => retorno),
+      catchError((erro) => this.exibirErroProdutos(erro))
+    )
+  }
 
   getAll():Observable<Produto[]>{
     return this.http.get<Produto[]>(this.url).pipe(
@@ -27,6 +30,16 @@ export class ProdutosService {
     return this.http.get(`${this.url}/${id}`);
   }
 
+  update(produto: Produto):Observable<Produto>{
+    return this.http.post<Produto>(`${this.url}/${produto.id_produto}`, produto).pipe(
+      map(retorno => retorno),
+      catchError((erro) => this.exibirErroProdutos(erro))
+    )
+  }
+
+  delete(id: number){
+    return this.http.delete(`${this.url}/${id}`);
+  }
 
   exibirErroProdutos(error: any):Observable<any>{
     alert("Algo Ocorreu errado");
