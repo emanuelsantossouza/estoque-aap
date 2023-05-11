@@ -1,29 +1,77 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Usuario
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<ion-item *ngFor="let cliente of listaClientes">
-  <ion-badge slot="end">{{cliente.id}}</ion-badge>
-  <ion-label>
-    <h1>{{cliente.nome}}</h1>
-    <h4><a href="mailto:{{cliente.email}}">{{cliente.email}}</a></h4>
-  </ion-label>
-</ion-item>
 
-<ion-button color="warning" (click)="alterarCliente(listaClientes.id!)">
-  <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-</ion-button>
+  <ion-segment value="listaUser">
+    <ion-segment-button (click)="listaUserTrue()"  value="listaUser">
+      <ion-label>Lista de Usuarios</ion-label>
+    </ion-segment-button>
 
-<ion-button color="danger" (click)="excluirCliente(listaClientes.id!)">
-  <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-</ion-button>
 
-<ion-button routerLink="/create-cliente">
-  adicionar cliente
-</ion-button>
+    <ion-segment-button (click)="addNewClienteTrue()"  value="addCliente">
+      <ion-label>Adicionar Cliente</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="listaUser === true">
+      <ion-item-sliding *ngFor="let cliente of listaClientes">
+        <ion-item lines="full">
+
+          <ion-label class="ion-text-wrap">
+            <div>
+              <h1>{{cliente.nome}}</h1>
+              <p><a href="mailto:{{cliente.email}}">{{cliente.email}}</a></p>
+            </div>
+          </ion-label>
+
+          <ion-chip color="primary">
+            <ion-label>{{cliente.id}}</ion-label>
+          </ion-chip>
+        </ion-item>
+
+        <ion-item-options side="start">
+          <ion-item-option color="warning" [routerLink]="['/alterar-cliente',cliente.id]">
+            <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)='excluirUsuario(cliente.id!)'>
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+  </div>
+
+  <div *ngIf="addClient === true">
+      <ion-list>
+        <ion-item>
+          <ion-input label="Nome Completo" type="text" labelPlacement="floating" placeholder="Nome"
+            [(ngModel)]="nomeCompleto"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Email" type="email" labelPlacement="floating" placeholder="Email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Senha" type="password" labelPlacement="floating" placeholder="Senha"
+            [(ngModel)]="senha"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input label="Confirmar Senha" type="password" labelPlacement="floating" placeholder="Confirmar Senha"
+            [(ngModel)]="confirmarSenha"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-button (click)="salvar()" class="ion-padding" expand="block" color="dark">Salvar</ion-button>
+  </div>
+
 </ion-content>
