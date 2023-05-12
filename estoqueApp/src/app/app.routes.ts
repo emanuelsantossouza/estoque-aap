@@ -17,9 +17,10 @@ export const routes: Routes = [
   {
     path: 'alterar-cliente/:id',
     loadComponent: () => import('./Pages/alterar-cliente/alterar-cliente.page').then( m => m.AlterarClientePage)
-  },  {
-    path: 'alterar-produtos',
-    loadComponent: () => import('./pages/alterar-produtos/alterar-produtos.page').then( m => m.AlterarProdutosPage)
+  },
+  {
+    path: 'alterar-produtos/:id',
+    loadComponent: () => import('./Pages/alterar-produtos/alterar-produtos.page').then( m => m.AlterarProdutosPage)
   },
 
 ];

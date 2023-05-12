@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProdutosService } from 'src/app/services/produtos.service';
+import { Produto } from 'src/app/Models/Produto.model';
 
 @Component({
   selector: 'app-alterar-produtos',
@@ -14,9 +15,9 @@ import { ProdutosService } from 'src/app/services/produtos.service';
 })
 export class AlterarProdutosPage implements OnInit {
 
-  id: number =0;
-  nome_produto: string = "";
-  descricao_produto: string = "";
+  id!: number;
+  nome: string = "";
+  descricao: string = "";
   nome_imagem: string = "";
   preco: number = 0;
 
@@ -28,7 +29,28 @@ export class AlterarProdutosPage implements OnInit {
   ngOnInit() {
     this.id = this.activedRoute.snapshot.params[`id`];
 
-    
+    this.produtoService.getOne(this.id).subscribe((dados) => {
+      console.log(dados)
+
+      this.nome = dados.nome as string;
+      this.descricao = dados.descricao as string;
+      this.preco = dados.preco as number;
+      this.nome_imagem = dados.nome_imagem as string;
+    })
   }
 
+  salvarAlteracaoProduto() {
+    const produto: Produto = {
+      nome: this.nome,
+      descricao: this.descricao,
+      preco: this.preco,
+      nome_imagem: this.nome_imagem
+    }
+
+    this.produtoService.create(produto).subscribe((dados) => {
+      console.log(dados)
+      alert("Alteração com sucesso!!")
+    })
+
+  }
 }

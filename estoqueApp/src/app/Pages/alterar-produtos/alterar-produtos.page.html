@@ -1,27 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>alterar-produtos</ion-title>
+    <ion-title>Alterando Produto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item>
-      <ion-input label="Nome Completo"  type="text" labelPlacement="floating" placeholder="Nome" [(ngModel)]="nome"></ion-input>
+      <ion-input label="Nome Produto" type="text" labelPlacement="floating" placeholder="Nome"
+        [(ngModel)]="nome"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Email" type="email" labelPlacement="floating" placeholder="Email" [(ngModel)]="email"></ion-input>
+      <ion-input label="Descrição do produto" type="text" labelPlacement="floating" placeholder="Descrição do produto" 
+      [(ngModel)]="descricao"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Senha" type="password" labelPlacement="floating" placeholder="Senha" [(ngModel)]="senha"></ion-input>
+      <ion-input label="Url da Imagem" type="text" labelPlacement="floating" placeholder="Url da Imagem"
+        [(ngModel)]="nome_imagem"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Confirmar Senha" type="password" labelPlacement="floating" placeholder="Confirmar Senha" [(ngModel)]="confirmarSenha"></ion-input>
+      <ion-input label="Preco do Produto" type="number" labelPlacement="floating" placeholder="Preço do produto"
+        [(ngModel)]="preco"></ion-input>
     </ion-item>
   </ion-list>
 
-  <ion-button (click)="salvar()" class="ion-padding" expand="block" color="dark">Salvar</ion-button>
+  <ion-button (click)="salvarAlteracaoProduto()" class="ion-padding" expand="block" color="dark">Salvar</ion-button>
 </ion-content>

@@ -26,15 +26,18 @@ export class ProdutosService {
     );
   }
 
-  getOne(id:number){
-    return this.http.get(`${this.url}/${id}`);
+  getOne(id:number):Observable<Produto>{
+    return this.http.get<Produto>(`${this.url}/${id}`).pipe(
+      map(retorno => retorno),
+      catchError((erro) => this.exibirErroProdutos(erro))
+    );
   }
 
   update(produto: Produto):Observable<Produto>{
-    return this.http.post<Produto>(`${this.url}/${produto.id_produto}`, produto).pipe(
+    return this.http.post<Produto>(`${this.url}/${produto.id}`, produto).pipe(
       map(retorno => retorno),
       catchError((erro) => this.exibirErroProdutos(erro))
-    )
+    );
   }
 
   delete(id: number){

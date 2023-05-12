@@ -4,14 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { AlertController, IonicModule } from '@ionic/angular';
 import { ProdutosService } from '../../services/produtos.service';
 import { Produto } from '../../Models/Produto.model';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.page.html',
   styleUrls: ['./produtos.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, RouterLink]
 })
 export class ProdutosPage implements OnInit {
 
@@ -20,8 +20,8 @@ export class ProdutosPage implements OnInit {
   listProducts!: boolean;
   addProducts!: boolean;
 
-  nome_produto: string = "";
-  descricao_produto: string = "";
+  nome: string = "";
+  descricao: string = "";
   nome_imagem: string = "";
   preco: number = 0;
 
@@ -49,14 +49,14 @@ export class ProdutosPage implements OnInit {
 
   excluirProduto(id: number) {
     return this.produtoService.delete(id).subscribe((dados) => {
-      this.listaProdutos = this.listaProdutos.filter(p => p.id_produto !== id);
+      this.listaProdutos = this.listaProdutos.filter(p => p.id !== id);
     });
   }
 
   salvarProduto() {
     const produto: Produto = {
-      nome_produto: this.nome_produto,
-      descricao_produto: this.descricao_produto,
+      nome: this.nome,
+      descricao: this.descricao,
       nome_imagem: this.nome_imagem,
       preco: this.preco
     };

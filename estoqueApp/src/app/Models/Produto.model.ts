@@ -1,7 +1,7 @@
 export class Produto {
-    id_produto?: number;
-    nome_produto: string | undefined;
-    descricao_produto: string | undefined;
+    id?: number;
+    nome: string | undefined;
+    descricao: string | undefined;
     preco: number | undefined;
     nome_imagem: string | undefined;
 }
